@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Link from "next/link";
+import { Toaster } from "@/components/ui/toaster";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -28,7 +30,15 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <nav className="bg-gray-800 text-white p-4">
+          <ul className="flex space-x-4">
+            <li><Link href="/">Home</Link></li>
+            <li><Link href="/funnels">My Funnels</Link></li>
+            <li><Link href="/funnel-creator">Create Funnel</Link></li>
+          </ul>
+        </nav>
         {children}
+        <Toaster />
       </body>
     </html>
   );
